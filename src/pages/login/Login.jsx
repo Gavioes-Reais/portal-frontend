@@ -65,7 +65,7 @@ function Login() {
             </span>
             <span>ou</span>
             <span>
-              <Link className={styles.bold} to="/">Cadastre-se</Link>
+              <Link className={styles.bold} to="/sign-up">Cadastre-se</Link>
             </span>
           </div>
         </form>
