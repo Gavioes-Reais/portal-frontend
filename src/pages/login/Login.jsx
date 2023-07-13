@@ -60,12 +60,12 @@ function Login() {
           </div>
           <Button type="submit" variant="contained" className={styles.button} color="warning">Entrar</Button>
           <div className={styles.forgotPasswordRegister}>
-            <span>Esqueceu a senha ?
-              <Link to="/">clique aqui</Link>
+            <span>Esqueceu a senha? 
+              <Link className={styles.bold} to="/"> clique aqui</Link>
             </span>
             <span>ou</span>
             <span>
-              <Link to="/">Cadastre-se</Link>
+              <Link className={styles.bold} to="/">Cadastre-se</Link>
             </span>
           </div>
         </form>

@@ -52,9 +52,24 @@
     width: 70%;
 }
 
+.bold{
+    font-weight: bold;
+    color: #ed6c02;
+    text-decoration: none;
+}
+
 .forgotPasswordRegister{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+@media (max-width: 1100px) {
+    .card{
+        width: 1000%;
+        height: 100%;
+    }
+}
+  
+  
