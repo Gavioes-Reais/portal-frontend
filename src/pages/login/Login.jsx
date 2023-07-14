@@ -11,9 +11,20 @@ function Login() {
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleCpfChange = (e) => {
-    setCpf(e.target.value);
-  };
+  function handleCpfChange(e) {
+    let cpfDigitado = e.target.value;
+
+    // Remove qualquer caractere não numérico do CPF
+    cpfDigitado = cpfDigitado.replace(/\D/g, '');
+
+    // Mantém apenas os primeiros 11 dígitos
+    cpfDigitado = cpfDigitado.substring(0, 11);
+
+    // Aplica a formatação
+    cpfDigitado = cpfDigitado.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+
+    setCpf(cpfDigitado);
+  }
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -22,7 +33,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aqui sera adicionado a autenticação
-    console.log('Email:', cpf);
+    console.log('CPF:', cpf);
     console.log('Password:', password);
     // aqui será adicionaldo a logica apóes o login ser realizado
   };
