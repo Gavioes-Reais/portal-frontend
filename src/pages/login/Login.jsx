@@ -8,11 +8,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 function Login() {
-  const [email, setEmail] = useState('');
+  const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleCpfChange = (e) => {
+    setCpf(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -22,7 +22,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aqui sera adicionado a autenticação
-    console.log('Email:', email);
+    console.log('Email:', cpf);
     console.log('Password:', password);
     // aqui será adicionaldo a logica apóes o login ser realizado
   };
@@ -36,14 +36,14 @@ function Login() {
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.row}>
             <TextField 
-                id="email" 
-                type="email" 
-                label="Email" 
+                id="cpf" 
+                type="text" 
+                label="CPF" 
                 variant="outlined"
                 color="warning"
                 className={styles.input} 
-                value={email}
-                onChange={handleEmailChange}
+                value={cpf}
+                onChange={handleCpfChange}
             />
           </div>
           <div className={styles.row}>
