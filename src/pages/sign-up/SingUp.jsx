@@ -28,14 +28,6 @@ const roles = [
 function SingUp() {
   const [etapaAtual, setEtapaAtual] = useState(1);
 
-  const avancarEtapa = () => {
-    setEtapaAtual(etapaAtual + 1);
-  };
-
-  const voltarEtapa = () => {
-    setEtapaAtual(etapaAtual - 1);
-  };
-  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [datebirth, setDatebirth] = useState('');
@@ -52,13 +44,13 @@ function SingUp() {
   const [number, setNumber] = useState('');
   const [complement, setComplement] = useState('');
 
-  function handleCpfChange(e) {
-    let cpfDigitado = e.target.value;
-    cpfDigitado = cpfDigitado.replace(/\D/g, '');
-    cpfDigitado = cpfDigitado.substring(0, 11);
-    cpfDigitado = cpfDigitado.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-    setCPF(cpfDigitado);
-  }
+  const avancarEtapa = () => {
+    setEtapaAtual(etapaAtual + 1);
+  };
+
+  const voltarEtapa = () => {
+    setEtapaAtual(etapaAtual - 1);
+  };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -111,6 +103,14 @@ function SingUp() {
   const handleNumberChange = (e) => {
     setNumber(e.target.value);
   };
+  
+  function handleCpfChange(e) {
+    let cpfDigitado = e.target.value;
+    cpfDigitado = cpfDigitado.replace(/\D/g, '');
+    cpfDigitado = cpfDigitado.substring(0, 11);
+    cpfDigitado = cpfDigitado.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    setCPF(cpfDigitado);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -321,6 +321,7 @@ function SingUp() {
           </form>
         )}
       </Card>
+      <ToastContainer />
     </div>
   )
 }

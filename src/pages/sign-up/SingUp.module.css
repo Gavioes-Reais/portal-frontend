@@ -96,4 +96,10 @@ img{
         flex-direction: row;
         justify-content: space-between;
     }
+    .buttons{
+        display: flex;
+        width: 80%;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
