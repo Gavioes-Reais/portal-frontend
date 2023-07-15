@@ -60,3 +60,17 @@
     color: #fff;
     text-decoration: none;
 }
+
+.buttons{
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.buttons_endereco{
+    display: flex;
+    width: 35%;
+    flex-direction: row;
+    justify-content: space-between;
+}

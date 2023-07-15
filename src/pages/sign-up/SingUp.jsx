@@ -26,6 +26,16 @@ const roles = [
 ];
 
 function SingUp() {
+  const [etapaAtual, setEtapaAtual] = useState(1);
+
+  const avancarEtapa = () => {
+    setEtapaAtual(etapaAtual + 1);
+  };
+
+  const voltarEtapa = () => {
+    setEtapaAtual(etapaAtual - 1);
+  };
+  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [datebirth, setDatebirth] = useState('');
@@ -34,11 +44,13 @@ function SingUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  function validandoCadastroPessoa(person){
-    if(person.name === null){
-      console.log(" O NOME É OBRIGATÓRIO")
-    }
-  }
+  const [cep, setCEP] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [street, setStreet] = useState('');
+  const [neighborhood, setNeighborhood] = useState('');
+  const [number, setNumber] = useState('');
+  const [complement, setComplement] = useState('');
 
   function handleCpfChange(e) {
     let cpfDigitado = e.target.value;
@@ -72,6 +84,34 @@ function SingUp() {
     setConfirmPassword(e.target.value);
   };
 
+  const handleCEPChange = (e) => {
+    setCEP(e.target.value);
+  };
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
+  };
+
+  const handleStateChange = (e) => {
+    setState(e.target.value);
+  };
+
+  const handleStreetChange = (e) => {
+    setStreet(e.target.value);
+  };
+
+  const handleNeighborhoodChange = (e) => {
+    setNeighborhood(e.target.value);
+  };
+
+  const handleComplementChange = (e) => {
+    setComplement(e.target.value);
+  };
+
+  const handleNumberChange = (e) => {
+    setNumber(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -90,35 +130,36 @@ function SingUp() {
       <Card className={styles.card}>
         <div className={styles.img}>
           <img src={logo} alt="logo"/>
-          <Link to="/"><Button variant="contained" color="warning" className={styles.linkButton} >Voltar</Button></Link>
+          <Link to="/"><Button variant="contained" color="warning" className={styles.linkButton} >Login</Button></Link>
         </div>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.row}>
-            <TextField 
-              id="name" 
-              type="text" 
-              label="Nome completo" 
-              variant="outlined" 
-              color="warning"
-              className={styles.input} 
-              value={name}
-              onChange={handleNameChange}
-            />
-            <TextField 
-              id="email" 
-              type="email" 
-              label="Email" 
-              variant="outlined" 
-              color="warning"
-              className={styles.input} 
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </div>
-          <div className={styles.row}>
-            <div className={styles.dataNascimento}>
-              <label>Data de Nascimento</label>
+        {etapaAtual === 1 && (
+          <form className={styles.form} onSubmit={avancarEtapa}>
+            <div className={styles.row}>
               <TextField 
+                id="name" 
+                type="text" 
+                label="Nome completo" 
+                variant="outlined" 
+                color="warning"
+                className={styles.input} 
+                value={name}
+                onChange={handleNameChange}
+              />
+              <TextField 
+                id="email" 
+                type="email" 
+                label="Email" 
+                variant="outlined" 
+                color="warning"
+                className={styles.input} 
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
+            <div className={styles.row}>
+              <div className={styles.dataNascimento}>
+                <label>Data de Nascimento</label>
+                <TextField 
                 id="datebirth" 
                 type="date" 
                 variant="outlined" 
@@ -126,64 +167,150 @@ function SingUp() {
                 className={styles.input}
                 value={datebirth}
                 onChange={handleDateBirthChange}
-              /> 
-            </div> 
-            <TextField 
-              id="cpf" 
-              type="text" 
-              label="CPF" 
-              variant="outlined" 
-              color="warning"
-              className={styles.input} 
-              value={cpf}
-              onChange={handleCpfChange}
-            />   
-          </div>
-          <div className={styles.row}>
-            <div className={styles.role}>
-              <label>Cadastrar-se como</label>
-              <TextField
-                id="role"
-                select
+                /> 
+              </div> 
+              <TextField 
+                id="cpf" 
+                type="text" 
+                label="CPF" 
+                variant="outlined" 
                 color="warning"
-                placeholder='Cadastrar-se como'
-                className={styles.input}
-                value={role}
-                onChange={handleRoleChange}
-              >
-                {roles.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.name}
-                  </MenuItem>
-                ))}
-              </TextField> 
+                className={styles.input} 
+                value={cpf}
+                onChange={handleCpfChange}
+              />   
             </div>
-            
-          </div>
-          <div className={styles.row}>
-            <TextField 
-              id="password" 
-              type="password" 
-              label="Senha" 
-              variant="outlined" 
-              color="warning"
-              className={styles.input} 
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <TextField 
-              id="confirm_password" 
-              type="password" 
-              label="Confirme sua senha" 
-              variant="outlined" 
-              color="warning"
-              className={styles.input} 
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-            />
-          </div>
-          <Button type="submit" variant="contained" color="warning">Entrar</Button>
-        </form>
+            <div className={styles.row}>
+              <div className={styles.role}>
+                <label>Cadastrar-se como</label>
+                <TextField
+                  id="role"
+                  select
+                  color="warning"
+                  placeholder='Cadastrar-se como'
+                  className={styles.input}
+                  value={role}
+                  onChange={handleRoleChange}
+                >
+                  {roles.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField> 
+              </div>
+              
+            </div>
+            <div className={styles.row}>
+              <TextField 
+                id="password" 
+                type="password" 
+                label="Senha" 
+                variant="outlined" 
+                color="warning"
+                className={styles.input} 
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <TextField 
+                id="confirm_password" 
+                type="password" 
+                label="Confirme sua senha" 
+                variant="outlined" 
+                color="warning"
+                className={styles.input} 
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+              />
+            </div>
+            <div className={styles.buttons}>
+              <Button type="submit" variant="contained" color="warning">Endereço</Button>
+            </div>
+          </form>
+        )}
+        { etapaAtual === 2 &&(
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.row}>
+              <TextField 
+                id="cep" 
+                type="text" 
+                label="CEP" 
+                variant="outlined" 
+                color="warning"
+                className={styles.input} 
+                value={cep}
+                onChange={handleCEPChange}
+              />
+              <TextField 
+                id="logradouro" 
+                type="text" 
+                label="Logradouro" 
+                variant="outlined" 
+                color="warning"
+                className={styles.input} 
+                value={street}
+                onChange={handleStreetChange}
+              />
+            </div>
+            <div className={styles.row}>
+              <TextField 
+                id="numero" 
+                type="text" 
+                label="Numero" 
+                variant="outlined" 
+                color="warning"
+                value={number}
+                onChange={handleNumberChange}
+              />
+              <TextField 
+                id="complemento" 
+                type="text" 
+                label="Complemento" 
+                variant="outlined" 
+                color="warning"
+                value={complement}
+                onChange={handleComplementChange}
+              />
+              <TextField 
+                id="bairro" 
+                type="text" 
+                label="Bairro" 
+                variant="outlined" 
+                color="warning"
+                value={neighborhood}
+                onChange={handleNeighborhoodChange}
+              />
+            </div>
+            <div className={styles.row}>
+              <TextField 
+                id="cidade" 
+                type="text" 
+                label="Cidade" 
+                variant="outlined" 
+                color="warning"
+                className={styles.input} 
+                value={city}
+                onChange={handleCityChange}
+              />
+              <TextField 
+                id="estado" 
+                type="text" 
+                label="Estado" 
+                variant="outlined" 
+                color="warning"
+                className={styles.input} 
+                value={state}
+                onChange={handleStateChange}
+              />
+            </div>
+            <div className={styles.buttons}>
+              <div className={styles.buttons_endereco}>
+                <Button type="button" color="warning" onClick={voltarEtapa}>Voltar</Button>
+                <Button type="submit" variant="contained" color="warning">Cadastrar-se</Button>
+              </div>
+            </div>
+          </form>
+        )}
       </Card>
     </div>
   )
