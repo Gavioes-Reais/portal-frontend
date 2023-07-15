@@ -27,7 +27,6 @@ function Login() {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: "colored",
@@ -41,7 +40,6 @@ function Login() {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: "colored",
@@ -55,7 +53,6 @@ function Login() {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: "colored",
@@ -63,36 +60,14 @@ function Login() {
       );
       retornaErro = true;
     }
-
     return !retornaErro;
-  }
-
-  function notify (){
-    toast.success("formulario enviado com sucesso", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-      }
-    )
   }
 
   function handleCpfChange(e) {
     let cpfDigitado = e.target.value;
-
-    // Remove qualquer caractere não numérico do CPF
     cpfDigitado = cpfDigitado.replace(/\D/g, '');
-
-    // Mantém apenas os primeiros 11 dígitos
     cpfDigitado = cpfDigitado.substring(0, 11);
-
-    // Aplica a formatação
     cpfDigitado = cpfDigitado.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-
     setCpf(cpfDigitado);
   }
 
@@ -102,14 +77,22 @@ function Login() {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aqui sera adicionado a autenticação
     let podeAutenticar = validandoLgin(cpf, password)
     console.log(podeAutenticar)
     if (!podeAutenticar) {
       return;
     }
-    
-    notify()
+    // Aqui sera adicionado a autenticação
+    toast.success("formulario enviado com sucesso", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      }
+    )
     
     console.log('CPF:', cpf);
     console.log('Password:', password);
