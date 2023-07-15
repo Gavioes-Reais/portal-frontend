@@ -1,15 +1,85 @@
 import React from 'react'
 import { useState } from 'react'
+
 import { Link } from 'react-router-dom';
+
 import styles from './Login.module.css'
+
 import logo from '../../assets/img/logo.png'
+
 import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Login() {
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
+
+  function validandoLgin(cpf, senha){
+    let retornaErro = false;
+
+    if (cpf === null || cpf.length === 0) {
+      toast.error('CPF é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (senha === null || senha.length === 0) {
+      toast.error('Senha é obrigatória!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (senha.length && senha.length <= 5) {
+      toast.error('A senha precisa ter pelo menos 8 caracteres!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+
+    return !retornaErro;
+  }
+
+  function notify (){
+    toast.success("formulario enviado com sucesso", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      }
+    )
+  }
 
   function handleCpfChange(e) {
     let cpfDigitado = e.target.value;
@@ -33,12 +103,21 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aqui sera adicionado a autenticação
+    let podeAutenticar = validandoLgin(cpf, password)
+    console.log(podeAutenticar)
+    if (!podeAutenticar) {
+      return;
+    }
+    
+    notify()
+    
     console.log('CPF:', cpf);
     console.log('Password:', password);
     // aqui será adicionaldo a logica apóes o login ser realizado
   };
 
   return (
+    
     <div className={styles.container}>
       <Card className={styles.card}>
         <div className={styles.img}>
@@ -81,6 +160,7 @@ function Login() {
           </div>
         </form>
       </Card>
+      <ToastContainer />
     </div>
   )
 }
