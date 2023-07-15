@@ -124,13 +124,22 @@ function SingUp() {
       password: password
     }
     console.log(person)
+    const address = {
+      cep: cep,
+      city: city,
+      state: state,
+      neighborhood: neighborhood,
+      street: street,
+      number: number,
+      complement: complement,
+    }
+    console.log(address)
   }
   return (
     <div className={styles.container}>
       <Card className={styles.card}>
         <div className={styles.img}>
-          <img src={logo} alt="logo"/>
-          <Link to="/"><Button variant="contained" color="warning" className={styles.linkButton} >Login</Button></Link>
+          <Link to="/"><img src={logo} alt="logo"/></Link>
         </div>
         {etapaAtual === 1 && (
           <form className={styles.form} onSubmit={avancarEtapa}>
@@ -305,7 +314,7 @@ function SingUp() {
             </div>
             <div className={styles.buttons}>
               <div className={styles.buttons_endereco}>
-                <Button type="button" color="warning" onClick={voltarEtapa}>Voltar</Button>
+                <Button type="button" color="warning" variant="outlined" onClick={voltarEtapa}>Voltar</Button>
                 <Button type="submit" variant="contained" color="warning">Cadastrar-se</Button>
               </div>
             </div>
