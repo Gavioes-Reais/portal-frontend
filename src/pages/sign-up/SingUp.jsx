@@ -123,6 +123,7 @@ function SingUp() {
                 type="date" 
                 variant="outlined" 
                 color="warning"
+                className={styles.input}
                 value={datebirth}
                 onChange={handleDateBirthChange}
               /> 

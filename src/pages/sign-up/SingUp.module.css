@@ -56,10 +56,6 @@
     align-items: center;
 }
 
-#datebirth, #role{
-    width: 20%;
-}
-
 .linkButton{
     color: #fff;
     text-decoration: none;
