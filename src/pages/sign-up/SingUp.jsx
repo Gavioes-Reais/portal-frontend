@@ -1,14 +1,18 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 import styles from './SingUp.module.css'
+
+import logo from '../../assets/img/logo.png'
 
 import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const roles = [
   {
@@ -29,6 +33,12 @@ function SingUp() {
   const [role, setRole] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  function validandoCadastroPessoa(person){
+    if(person.name === null){
+      console.log(" O NOME É OBRIGATÓRIO")
+    }
+  }
 
   function handleCpfChange(e) {
     let cpfDigitado = e.target.value;
@@ -78,7 +88,10 @@ function SingUp() {
   return (
     <div className={styles.container}>
       <Card className={styles.card}>
-        <h1>Cadastre</h1>
+        <div className={styles.img}>
+          <img src={logo} alt="logo"/>
+          <Link to="/"><Button variant="contained" color="warning" className={styles.linkButton} >Voltar</Button></Link>
+        </div>
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.row}>
             <TextField 
@@ -168,7 +181,7 @@ function SingUp() {
               onChange={handleConfirmPasswordChange}
             />
           </div>
-          <Button type="submit" variant="contained" className={styles.button} color="warning">Entrar</Button>
+          <Button type="submit" variant="contained" color="warning">Entrar</Button>
         </form>
       </Card>
     </div>

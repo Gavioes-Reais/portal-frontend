@@ -15,6 +15,19 @@
     align-items: center;
 }
 
+.img{
+    width: 90%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img > img{
+    width: 300px;
+    height: 80px;
+}
+
 .form{
     width: 100%;
     height: 100%;
@@ -45,4 +58,9 @@
 
 #datebirth, #role{
     width: 20%;
+}
+
+.linkButton{
+    color: #fff;
+    text-decoration: none;
 }
