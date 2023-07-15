@@ -9,7 +9,7 @@
 
 .card{
     width: 50%;
-    height: 80%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,7 @@
     width: 45%;
 }
 
-.dataNascimento{
+.dataNascimento, .role{
     width: 45%;
     display: flex;
     flex-direction: row;
@@ -43,6 +43,6 @@
     align-items: center;
 }
 
-#datebirth{
+#datebirth, #role{
     width: 20%;
 }
