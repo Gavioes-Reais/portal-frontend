@@ -44,7 +44,15 @@ function SingUp() {
   const [number, setNumber] = useState('');
   const [complement, setComplement] = useState('');
 
-  const avancarEtapa = () => {
+  const avancarEtapa = (e) => {
+    e.preventDefault();
+
+    let podeAutenticar = validandoInfoPessoais(name, email, cpf, datebirth, role, password, confirmPassword)
+    console.log(podeAutenticar)
+    if (!podeAutenticar) {
+      return;
+    }
+
     setEtapaAtual(etapaAtual + 1);
   };
 
@@ -110,6 +118,116 @@ function SingUp() {
     cpfDigitado = cpfDigitado.substring(0, 11);
     cpfDigitado = cpfDigitado.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     setCPF(cpfDigitado);
+  }
+
+  function validandoInfoPessoais(name, email, cpf, datebirth, role, password, confirmPassword){
+    let retornaErro = false;
+
+    if (name === null || name.length === 0) {
+      toast.error('O nome é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (email === null || email.length === 0) {
+      toast.error('email é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (cpf === null || cpf.length === 0) {
+      toast.error('CPF é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (datebirth === null || datebirth.length === 0) {
+      toast.error('Data de nascimento é obrigatória!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (role === null || role.length === 0) {
+      toast.error('Data de nascimento é obrigatória!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (password === null || password.length === 0) {
+      toast.error('Senha é obrigatória!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (password.length && password.length <= 5) {
+      toast.error('A senha precisa ter pelo menos 8 caracteres!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if(password !== confirmPassword){
+      toast.error('As senhas presicam ser iguais', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    return !retornaErro;
   }
 
   const handleSubmit = (e) => {
