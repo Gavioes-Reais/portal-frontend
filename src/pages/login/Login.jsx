@@ -20,7 +20,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-
   function validandoLgin(cpf, senha){
     let retornaErro = false;
 
