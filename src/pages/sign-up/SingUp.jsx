@@ -230,6 +230,104 @@ function SingUp() {
     return !retornaErro;
   }
 
+  function validandoEndereco(cep, cidade, estado, rua, numero, bairro, complemento){
+    let retornaErro = false;
+
+    if (cep === null || cep.length === 0) {
+      toast.error('cep é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (cidade === null || cidade.length === 0) {
+      toast.error('cidade é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (estado === null || estado.length === 0) {
+      toast.error('estado é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (rua === null || rua.length === 0) {
+      toast.error('a rua é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (numero === null || numero.length === 0) {
+      toast.error('numero é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (bairro === null || bairro.length === 0) {
+      toast.error('bairro é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+    if (complemento === null || complemento.length === 0) {
+      toast.error('complemento é obrigatório!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        }
+      );
+      retornaErro = true;
+    }
+
+    return !retornaErro;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -242,6 +340,12 @@ function SingUp() {
       password: password
     }
     console.log(person)
+    let podeAutenticar = validandoEndereco(cep, city, state, street, number, neighborhood, complement)
+    console.log(podeAutenticar)
+    if (!podeAutenticar) {
+      return;
+    }
+    
     const address = {
       cep: cep,
       city: city,
