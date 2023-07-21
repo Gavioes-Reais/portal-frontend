@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { Link } from 'react-router-dom';
+
 import {
   Drawer,
   IconButton,
@@ -12,7 +14,16 @@ import {
 import menuIcon from '../../assets/icons/menu_FILL0_wght400_GRAD0_opsz48.svg'
 import styles from './NavBar.module.css'
 
-const pages = ["Calendário",];
+const pages = [
+    {
+        name: "Home",
+        rota: "/home"
+    },
+    {
+        name: "Calendário",
+        rota: "/calendar"
+    }
+];
 
 const DrawerComp = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -27,9 +38,11 @@ const DrawerComp = () => {
         <List>
           {pages.map((page, index) => (
             <ListItemButton key={index}>
-              <ListItemIcon>
-                <ListItemText>{page}</ListItemText>
-              </ListItemIcon>
+                <Link to={page.rota}>
+                    <ListItemIcon>
+                        <ListItemText>{page.name}</ListItemText>
+                    </ListItemIcon>
+                </Link>
             </ListItemButton>
           ))}
         </List>
