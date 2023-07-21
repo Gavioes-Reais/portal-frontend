@@ -1,20 +1,42 @@
 .full_view{
     width: 100%;
     height: 100%;
-    background-color: #cecece;
 }
 
 .container{
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: #cecece;
+    align-items: center;
 }
 
 .calendar{
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
     width: 80%;
     height: 50%;
-    margin: 2rem;
+    border: 1px solid #f8fbff;
+}
+
+.events {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.events .ant_badge_status {
+    width: 100%;
+    overflow: hidden;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.notes_month {
+    font-size: 28px;
+    text-align: center;
+}
+
+.notes_month section {
+    font-size: 28px;
 }

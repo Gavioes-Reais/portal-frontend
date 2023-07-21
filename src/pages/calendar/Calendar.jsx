@@ -5,10 +5,10 @@ import styles from './Calendar.module.css'
 import NavBar from '../../components/Navbar/NavBar';
 
 import { Badge, Calendar } from 'antd';
-import Card from '@mui/material/Card';
 
 const getListData = (value) => {
     let listData;
+    //exemplo de avisos por dia
     switch (value.date()) {
       case 8:
         listData = [
@@ -51,7 +51,7 @@ function CalendarComp() {
     const monthCellRender = (value) => {
         const num = getMonthData(value);
         return num ? (
-          <div className="notes-month">
+          <div className={styles.notes_month}>
             <section>{num}</section>
             <span>recados do mes</span>
           </div>
@@ -61,7 +61,7 @@ function CalendarComp() {
     const dateCellRender = (value) => {
         const listData = getListData(value);
         return (
-          <ul className="events">
+          <ul className={styles.events}>
             {listData.map((item) => (
               <li key={item.content}>
                 <Badge status={item.type} text={item.content} />
@@ -84,16 +84,15 @@ function CalendarComp() {
     return (
         <div className={styles.full_view}>
             <NavBar/>
-            <Card className={styles.container}>                       
+            <div className={styles.container}> 
                 <Calendar 
                 onPanelChange={onPanelChange} 
                 cellRender={cellRender}
                 className={styles.calendar} 
-                />
-            </Card>
+                />                      
+            </div>
         </div>
     );
 }
 
 export default CalendarComp
-
