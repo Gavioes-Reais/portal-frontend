@@ -93,18 +93,16 @@ function Login() {
       const user = await AuthService.login(cpf, password);
       console.log("Usuário logado:", user);
 
-      if(cpf === "106.935.759-64" & password === "joile123"){
-        toast.success("Login realizado com sucesso", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          }
-        ) 
-      }
+      toast.success("Login realizado com sucesso", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })      
+      
     }  catch (e) {
       toast.error(`${e}`, {
         position: "top-right",
