@@ -25,3 +25,13 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+.drawer{
+    width: 200px;
+    background-color: #fff;
+}

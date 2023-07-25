@@ -15,14 +15,18 @@ import menuIcon from '../../assets/icons/menu_FILL0_wght400_GRAD0_opsz48.svg'
 import styles from './NavBar.module.css'
 
 const pages = [
-    {
-        name: "Home",
-        rota: "/home"
-    },
-    {
-        name: "Calendário",
-        rota: "/calendar"
-    }
+  {
+    name: "Home",
+    rota: "/home"
+  },
+  {
+    name: "Calendário",
+    rota: "/calendar"
+  },
+  {
+    name: "Biblioteca",
+    rota: "/library"
+  }
 ];
 
 const DrawerComp = () => {
@@ -33,9 +37,10 @@ const DrawerComp = () => {
       <Drawer
         anchor="left"
         open={openDrawer}
+        
         onClose={() => setOpenDrawer(false)}
       >
-        <List>
+        <List className={styles.drawer}>
           {pages.map((page, index) => (
             <ListItemButton key={index}>
                 <Link to={page.rota}>
