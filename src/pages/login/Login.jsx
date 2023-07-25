@@ -1,11 +1,11 @@
-import React from 'react'
-import { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import styles from './Login.module.css'
+import styles from './Login.module.css';
 
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/img/logo.png';
 
 import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
@@ -14,6 +14,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import AuthService from "../../services/AuthService";
 
 function Login() {
   const [cpf, setCpf] = useState('');
@@ -77,30 +79,34 @@ function Login() {
     setPassword(e.target.value);
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     let podeAutenticar = validandoLgin(cpf, password)
-    console.log(podeAutenticar)
     if (!podeAutenticar) {
       setLoading(false);
       return;
     }
 
-    // Aqui sera adicionado a autenticação
-    if(cpf === "106.935.759-64" & password === "joile123"){
-      toast.success("Login realizado com sucesso", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        }
-      ) 
-    } else {
-      toast.error('Cpf ou senha incorretos', {
+    try{
+      setLoading(true);
+      // Aqui sera adicionado a autenticação
+      const user = await AuthService.login(cpf, password);
+      console.log("Usuário logado:", user);
+
+      if(cpf === "106.935.759-64" & password === "joile123"){
+        toast.success("Login realizado com sucesso", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          }
+        ) 
+      }
+    }  catch (e) {
+      toast.error(`${e}`, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -110,12 +116,9 @@ function Login() {
         theme: "colored",
         }
       );
+    } finally {
       setLoading(false);
     }
-    
-    console.log('CPF:', cpf);
-    console.log('Password:', password);
-    // aqui será adicionaldo a logica apóes o login ser realizado
   };
 
   return (

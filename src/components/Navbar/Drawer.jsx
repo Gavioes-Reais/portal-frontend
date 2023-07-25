@@ -37,17 +37,16 @@ const DrawerComp = () => {
       <Drawer
         anchor="left"
         open={openDrawer}
-        
         onClose={() => setOpenDrawer(false)}
       >
         <List className={styles.drawer}>
           {pages.map((page, index) => (
             <ListItemButton key={index}>
-                <Link to={page.rota}>
-                    <ListItemIcon>
-                        <ListItemText>{page.name}</ListItemText>
-                    </ListItemIcon>
-                </Link>
+              <Link to={page.rota}>
+                <ListItemIcon>
+                  <ListItemText>{page.name}</ListItemText>
+                </ListItemIcon>
+              </Link>
             </ListItemButton>
           ))}
         </List>
