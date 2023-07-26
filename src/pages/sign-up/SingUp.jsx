@@ -490,6 +490,7 @@ function SingUp() {
                 label="Numero" 
                 variant="outlined" 
                 color="warning"
+                className={styles.input_triple}
                 value={number}
                 onChange={handleNumberChange}
               />
@@ -499,6 +500,7 @@ function SingUp() {
                 label="Complemento" 
                 variant="outlined" 
                 color="warning"
+                className={styles.input_triple}
                 value={complement}
                 onChange={handleComplementChange}
               />
@@ -508,6 +510,7 @@ function SingUp() {
                 label="Bairro" 
                 variant="outlined" 
                 color="warning"
+                className={styles.input_triple}
                 value={neighborhood}
                 onChange={handleNeighborhoodChange}
               />

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { Link } from 'react-router-dom';
 
+import DensityMediumOutlinedIcon from '@mui/icons-material/DensityMediumOutlined';
+
 import {
   Drawer,
   IconButton,
@@ -11,7 +13,6 @@ import {
   ListItemText,
 } from "@mui/material";
 
-import menuIcon from '../../assets/icons/menu_FILL0_wght400_GRAD0_opsz48.svg'
 import styles from './NavBar.module.css'
 
 const pages = [
@@ -55,7 +56,7 @@ const DrawerComp = () => {
         sx={{ color: "white", marginLeft: "auto" }}
         onClick={() => setOpenDrawer(!openDrawer)}
       >
-        <img src={menuIcon} alt="menu" className={styles.icons} />
+        <DensityMediumOutlinedIcon className={styles.icons} />
       </IconButton>
     </React.Fragment>
   );

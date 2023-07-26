@@ -6,11 +6,12 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-import accountIcon from '../../assets/icons/account_circle_FILL0_wght400_GRAD0_opsz48.svg';
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/img/logo.png';
+
 import PersonIcon from '@mui/icons-material/Person';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 import styles from './NavBar.module.css';
 
@@ -45,7 +46,7 @@ const NavBar = () => {
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}>
-            <img src={accountIcon} alt="perfl" className={styles.icons} />
+            <AccountCircleOutlinedIcon className={styles.icons} />
           </IconButton>
           <Menu
             id="basic-menu"
