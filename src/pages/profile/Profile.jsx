@@ -6,7 +6,9 @@ const Profile = () => {
   return (
     <div className={styles.full_view}>
       <NavBar/>
-      perfil
+      <div className={styles.view_profile}>
+        
+      </div>
     </div>
   )
 }
