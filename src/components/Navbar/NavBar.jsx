@@ -30,7 +30,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar color="warning" position="static" >
+    <AppBar color="warning" position="sticky" >
       <Toolbar className={styles.spaceBeetwen}>
         <div>
           <DrawerComp />
