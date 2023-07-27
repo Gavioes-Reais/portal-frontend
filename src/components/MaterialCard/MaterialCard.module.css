@@ -1,8 +1,13 @@
-.toogle{
-    width: 30%;
+.card{
+    width: 25%;
+    height: 20rem;
+    margin: 5px;
+    border: 1px outset rgba(0, 0, 0, 0);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.card{
+.image{
     width: 100%;
-    height: 20rem;
+    height: 50%;
+    padding: 1px;
 }

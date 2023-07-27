@@ -3,8 +3,6 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
-import Typography from '@mui/material/Typography';
 
 import styles from './MaterialCard.module.css'
 
@@ -12,24 +10,17 @@ const imagem = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHB
 
 const MaterialCard = () => {
   return (
-    <CardActionArea className={styles.toogle}>
     <Card className={styles.card}>
       <CardMedia
         component="img"
         image={imagem}
         alt="curso imagem"
+        className={styles.image}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        a
       </CardContent>
   </Card>
-  </CardActionArea>
   )
 }
 
