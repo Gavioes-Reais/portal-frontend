@@ -1,9 +1,10 @@
 import React from 'react'
+import NavBar from '../../components/Navbar/NavBar'
 
 const Library = () => {
   return (
     <div>
-      Biblioteca
+      <NavBar/>
     </div>
   )
 }

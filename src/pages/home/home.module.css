@@ -11,9 +11,16 @@
 .componentes_curriculares{
     width: 70%;
     height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .atividades_proximas{
     width: 20%;
     height: 80%;
+}
+
+.CardHeader{
+    border-bottom: 2px solid #cecece;
 }

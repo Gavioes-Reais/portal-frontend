@@ -1,9 +1,10 @@
 import React from 'react'
+import NavBar from '../../components/Navbar/NavBar'
 
 const Bulletin = () => {
   return (
     <div>
-      aa
+      <NavBar/>
     </div>
   )
 }
