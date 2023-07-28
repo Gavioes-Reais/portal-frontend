@@ -1,12 +1,13 @@
 import React from 'react'
 import NavBar from '../../components/Navbar/NavBar'
 
-const Library = () => {
+const Course = () => {
   return (
     <div>
       <NavBar/>
+      Curso
     </div>
   )
 }
 
-export default Library
+export default Course

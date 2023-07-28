@@ -30,7 +30,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar color="warning" position="static" >
+    <AppBar color="warning" position="sticky" >
       <Toolbar className={styles.spaceBeetwen}>
         <div>
           <DrawerComp />
@@ -59,17 +59,17 @@ const NavBar = () => {
           >
             <Link to="/profile" className={styles.link}>
               <MenuItem onClick={handleClose} className={styles.menu}>
-                <span className={styles.conteudoMenu}><PersonIcon/> Perfil</span> 
+                <span className={styles.conteudoMenu}> <PersonIcon/>  Perfil</span> 
               </MenuItem>
             </Link>
             <Link to="/bulletin"  className={styles.link}>
               <MenuItem onClick={handleClose} className={styles.menu}>
-                <span className={styles.conteudoMenu}><AssignmentIcon/> Boletim</span> 
+                <span className={styles.conteudoMenu}> <AssignmentIcon/>  Boletim</span> 
               </MenuItem>
             </Link>
             <Link  className={styles.link}>
               <MenuItem onClick={handleClose} className={styles.menu}>
-                <span className={styles.conteudoMenu}><LogoutIcon/> Sair</span> 
+                <span className={styles.conteudoMenu}> <LogoutIcon/>  Sair</span> 
               </MenuItem>
             </Link>
           </Menu>

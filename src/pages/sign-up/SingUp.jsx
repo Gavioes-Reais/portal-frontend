@@ -411,7 +411,7 @@ function SingUp() {
                 onChange={handleCpfChange}
               />   
             </div>
-            <div className={styles.row}>
+            <div className={styles.row_one_input}>
               <div className={styles.role}>
                 <label>Cadastrar-se como</label>
                 <TextField
