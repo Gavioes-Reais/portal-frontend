@@ -4,6 +4,7 @@
     margin: 5px;
     border: 1px outset rgba(0, 0, 0, 0);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease-in-out;
 }
 
 .image{
@@ -19,3 +20,13 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.card:hover {
+    transform: scale(0.95);
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+  
+.card:active {
+    transform: scale(0.90); 
+}  
