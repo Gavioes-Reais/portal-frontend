@@ -1,21 +1,23 @@
 .card{
     width: 25%;
     height: 20rem;
-    margin: 5px;
+    margin: 10px;
     border: 1px outset rgba(0, 0, 0, 0);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.5s ease-in-out;
+    transform-origin: center;
+    backface-visibility: hidden;
 }
 
 .image{
     width: 100%;
-    height: 50%;
+    height: 55%;
     padding: 1px;
     background-size: cover;
 }
 
 .conteudo{
-    height: 50%;
+    height: 45%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,3 +32,8 @@
 .card:active {
     transform: scale(0.90); 
 }  
+
+.link{
+    text-decoration: none;
+    color: black;
+}

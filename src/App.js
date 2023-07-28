@@ -17,7 +17,8 @@ function App() {
         <Route exact path="/calendar" element={ <Calendar/> }/>
         <Route exact path="/profile" element={ <Profile/> }/>
         <Route exact path="/library" element={ <Library/> }/>
-        <Route exact path="/bulletin" element={ <Bulletin/> }/>   
+        <Route exact path="/bulletin" element={ <Bulletin/> }/>
+        <Route exact path="/course/:id" element={ <Bulletin/> }/>    
       </Routes>
     </Router>
   );
