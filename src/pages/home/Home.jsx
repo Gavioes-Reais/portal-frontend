@@ -54,10 +54,9 @@ function Home() {
                         img={data.img}
                         />
                     ))}
-                    {removeLoading && cursosMocados.length === 0 && (
-                        <div>
-                            Buscando cursos
-                            <CircularProgress />
+                    {cursosMocados.length === 0 && (
+                        <div className={styles.not_found_courses}>
+                           <h1>Nenhum curso foi encontrado</h1>
                         </div>
                     )}
                 </div>
