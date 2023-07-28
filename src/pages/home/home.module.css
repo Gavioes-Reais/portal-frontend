@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .componentes_curriculares{
@@ -20,6 +20,7 @@
 .atividades_proximas{
     width: 20%;
     height: auto;
+    margin-top: 5rem;
 }
 
 .CardHeader{
