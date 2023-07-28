@@ -37,3 +37,9 @@
     text-decoration: none;
     color: black;
 }
+
+@media (max-width: 1100px){
+    .card{
+        width: 70%;
+    }
+}
