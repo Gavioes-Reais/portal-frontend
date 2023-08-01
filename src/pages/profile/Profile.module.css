@@ -169,3 +169,33 @@
 .linkMateria:hover{
     text-decoration: underline;
 }
+
+@media (max-width: 1100px) {
+    .profile{
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .row{
+        align-items: center;
+        flex-direction: column;
+    }
+    .achievements{
+        width: 90%;
+        flex-direction: column;
+    }
+    .pic_profile{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .more_info{
+        flex-direction: column;
+    }
+    .collumnInfo{
+        width: 100%;
+    }
+    .collumnInfo{
+        margin-top: 1rem;
+        width: 100%;
+    }
+}
