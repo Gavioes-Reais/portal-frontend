@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState} from 'react'
 import { Link } from 'react-router-dom';
 
 import styles from './SingUp.module.css'
@@ -44,15 +44,37 @@ function SingUp() {
   const [number, setNumber] = useState('');
   const [complement, setComplement] = useState('');
 
+  const handleInputBlur = async () => {
+    try {
+      const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`);
+      if (!response.ok) {
+        toast.error('Erro ao realizar requisição', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          }
+        );
+      }
+      const jsonData = await response.json();
+      const { state, city } = jsonData;
+      setState(state);
+      setCity(city);
+    } catch (error) {
+      console.error('Erro na requisição:', error);
+    }
+  };
+
   const avancarEtapa = (e) => {
     e.preventDefault();
-
     let podeAutenticar = validandoInfoPessoais(name, email, cpf, datebirth, role, password, confirmPassword)
     console.log(podeAutenticar)
     if (!podeAutenticar) {
       return;
     }
-
     setEtapaAtual(etapaAtual + 1);
   };
 
@@ -85,7 +107,11 @@ function SingUp() {
   };
 
   const handleCEPChange = (e) => {
-    setCEP(e.target.value);
+    let cepDigitado = (e.target.value);
+    cepDigitado = cepDigitado.replace(/\D/g, '');
+    cepDigitado = cepDigitado.substring(0, 8);
+    cepDigitado = cepDigitado.slice(0, 5) + '-' + cepDigitado.slice(5);
+    setCEP(cepDigitado)
   };
 
   const handleCityChange = (e) => {
@@ -471,6 +497,7 @@ function SingUp() {
                 className={styles.input} 
                 value={cep}
                 onChange={handleCEPChange}
+                onBlur={handleInputBlur}
               />
               <TextField 
                 id="logradouro" 
@@ -483,7 +510,7 @@ function SingUp() {
                 onChange={handleStreetChange}
               />
             </div>
-            <div className={styles.row}>
+            <div className={styles.row_triple}>
               <TextField 
                 id="numero" 
                 type="text" 

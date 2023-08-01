@@ -21,6 +21,18 @@
     width: 20%;
     height: auto;
     margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.not_found_actividades{
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .CardHeader{

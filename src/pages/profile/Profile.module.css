@@ -1,10 +1,201 @@
 .full_view{
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: #f1f1f1;
 }
 
 .view_profile{
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.profile{
+    width:70%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.row{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.more_info{
+    width: 100%;
+    padding: 2rem;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.infos{
+    width: auto;
+    background-color: #fff;
+    font-size: 20px;
+    margin-top: 2rem;
+}
+
+.infos > p{
+    margin-top: 5px;
+}
+
+.linkEmail{
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.linkEmail:hover{
+    text-decoration: underline;
+}
+
+.linkEmail > p {
+    margin-top: 5px;
+}
+
+.pic_profile{
+    width: 30%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pic_profile > h4{
+    margin-bottom: 1rem;
+}
+
+.img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.achievements{
+    width: 60%;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 2%;
+}
+
+.achievements_list{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.achievements_img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px outset rgba(0, 0, 0, 0);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease;
+}
+
+.card_achievments{
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.link{
+    color: black;
+    font-size: 800;
+    text-decoration: none;
+}
+
+.link:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.collumnInfo{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.collumnCourse{
+    width: 40%;
+    height: max-content;
+}
+
+.collumnCourseContent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CardHeader{
+    border-bottom: 2px solid #cecece;
+}
+
+.not_found_materia{
+    margin: 2rem;
+    width: 80%;
+    text-align: center;
+}
+
+.linkMateria{
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 1rem;
+    text-align: center;
+}
+
+.linkMateria:hover{
+    text-decoration: underline;
+}
+
+@media (max-width: 1100px) {
+    .profile{
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .row{
+        align-items: center;
+        flex-direction: column;
+    }
+    .achievements{
+        width: 90%;
+        flex-direction: column;
+    }
+    .pic_profile{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .more_info{
+        flex-direction: column;
+    }
+    .collumnInfo{
+        width: 100%;
+    }
+    .collumnInfo{
+        margin-top: 1rem;
+        width: 100%;
+    }
 }
