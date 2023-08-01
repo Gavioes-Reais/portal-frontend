@@ -90,13 +90,13 @@ function Home() {
                     atividades.map((data) => (
                         <div>Atividade</div>
                     ))}
-                    {atividades.length === 0 && (
-                        <div className={styles.not_found_actividades}>
-                           <h4>Nenhuma atividade foi encontrada </h4>
-                           <br/>
-                           <CircularProgress color='warning'/>
-                        </div>
-                    )}
+                {atividades.length === 0 && (
+                    <div className={styles.not_found_actividades}>
+                        <h4>Nenhuma atividade foi encontrada </h4>
+                        <br/>
+                        <CircularProgress color='warning'/>
+                    </div>
+                )}
             </Card>
         </div>
     </>  
