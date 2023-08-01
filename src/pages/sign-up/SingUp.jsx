@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState} from 'react'
 import { Link } from 'react-router-dom';
 
 import styles from './SingUp.module.css'
@@ -43,6 +43,30 @@ function SingUp() {
   const [neighborhood, setNeighborhood] = useState('');
   const [number, setNumber] = useState('');
   const [complement, setComplement] = useState('');
+
+  const handleInputBlur = async () => {
+    try {
+      const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`);
+      if (!response.ok) {
+        toast.error('Erro ao realizar requisição', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          }
+        );
+      }
+      const jsonData = await response.json();
+      const { state, city } = jsonData;
+      setState(state);
+      setCity(city);
+    } catch (error) {
+      console.error('Erro na requisição:', error);
+    }
+  };
 
   const avancarEtapa = (e) => {
     e.preventDefault();
@@ -473,6 +497,7 @@ function SingUp() {
                 className={styles.input} 
                 value={cep}
                 onChange={handleCEPChange}
+                onBlur={handleInputBlur}
               />
               <TextField 
                 id="logradouro" 
@@ -485,7 +510,7 @@ function SingUp() {
                 onChange={handleStreetChange}
               />
             </div>
-            <div className={styles.row}>
+            <div className={styles.row_triple}>
               <TextField 
                 id="numero" 
                 type="text" 

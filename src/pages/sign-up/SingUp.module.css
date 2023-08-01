@@ -37,7 +37,7 @@ img{
     align-items: center;
 }
 
-.row, .row_one_input{
+.row, .row_one_input, .row_triple{
     display: flex;
     width: 90%;
     flex-direction: row;
@@ -46,6 +46,10 @@ img{
 
 .input{
     width: 45%;
+}
+
+.input_triple{
+    width: 25%;
 }
 
 .dataNascimento, .role{
@@ -95,6 +99,7 @@ img{
     .row_one_input{
         height: 10%;
         align-items: center;
+        justify-content: center;
     }
     .input{
         width: 90%;
@@ -117,5 +122,10 @@ img{
     }
     .input_triple{
         width: 90%;
+    }
+    .row_triple{
+        height: 30%;
+        flex-direction: column;
+        align-items: center;
     }
 }
