@@ -148,6 +148,10 @@
     align-items: center;
 }
 
+.collumnC{
+    height: max-content;
+}
+
 .CardHeader{
     border-bottom: 2px solid #cecece;
 }

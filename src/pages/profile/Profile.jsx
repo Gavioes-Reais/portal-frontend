@@ -155,7 +155,7 @@ const Profile = () => {
                 <p>{address.complement}</p>
               </div>
             </div>
-            <Card className={styles.collumnInfo}>
+            <Card className={styles.collumnC}>
               <CardHeader title="Matrículas" className={styles.CardHeader} />
               <div className={styles.collumnCourseContent}>
                 {materias.length > 0 &&
