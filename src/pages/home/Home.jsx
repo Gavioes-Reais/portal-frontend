@@ -88,7 +88,12 @@ function Home() {
                 <CardHeader title="Atividades proximas" className={styles.CardHeader} />
                 {atividades.length > 0 &&
                     atividades.map((data) => (
-                        <div>Atividade</div>
+                        <div
+                        id={data.id} 
+                        key={data.id}
+                        >
+                            Atividadees
+                        </div>
                     ))}
                 {atividades.length === 0 && (
                     <div className={styles.not_found_actividades}>

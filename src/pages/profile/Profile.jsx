@@ -10,26 +10,32 @@ const img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvjri0cgNoRSF
 
 const conquitas = [
   {
+    id: 1,
     name: 'Conquist 1',
     img: 'https://camo.githubusercontent.com/93a470d9cb4e7f8116d53a6f6e9a75c57d0359af59d8efa0b966ec11099db35f/68747470733a2f2f6769746875622e6769746875626173736574732e636f6d2f696d616765732f6d6f64756c65732f70726f66696c652f616368696576656d656e74732f706169722d65787472616f7264696e616972652d64656661756c742e706e67'
   },
   {
+    id: 2,
     name: 'Conquist 2',
     img: 'https://camo.githubusercontent.com/98e693d243cde46579166501d14a9259daa92de146d9ba7d6af25255c4707974/68747470733a2f2f6769746875622e6769746875626173736574732e636f6d2f696d616765732f6d6f64756c65732f70726f66696c652f616368696576656d656e74732f7374617273747275636b2d64656661756c742e706e67'
   },
   {
+    id: 3,
     name: 'Conquist 3',
     img: 'https://camo.githubusercontent.com/d4a52cfb3181d13b7a8267394f66299c39d3c9c1da254f6beea092af1c755cca/68747470733a2f2f6769746875622e6769746875626173736574732e636f6d2f696d616765732f6d6f64756c65732f70726f66696c652f616368696576656d656e74732f70756c6c2d736861726b2d64656661756c742e706e67'
   },
   {
+    id: 4,
     name: 'Conquist 4',
     img: 'https://camo.githubusercontent.com/93a470d9cb4e7f8116d53a6f6e9a75c57d0359af59d8efa0b966ec11099db35f/68747470733a2f2f6769746875622e6769746875626173736574732e636f6d2f696d616765732f6d6f64756c65732f70726f66696c652f616368696576656d656e74732f706169722d65787472616f7264696e616972652d64656661756c742e706e67'
   },
   {
+    id: 5,
     name: 'Conquist 5',
     img: 'https://camo.githubusercontent.com/98e693d243cde46579166501d14a9259daa92de146d9ba7d6af25255c4707974/68747470733a2f2f6769746875622e6769746875626173736574732e636f6d2f696d616765732f6d6f64756c65732f70726f66696c652f616368696576656d656e74732f7374617273747275636b2d64656661756c742e706e67'
   },
   {
+    id: 6,
     name: 'Conquist 6',
     img: 'https://camo.githubusercontent.com/d4a52cfb3181d13b7a8267394f66299c39d3c9c1da254f6beea092af1c755cca/68747470733a2f2f6769746875622e6769746875626173736574732e636f6d2f696d616765732f6d6f64756c65732f70726f66696c652f616368696576656d656e74732f70756c6c2d736861726b2d64656661756c742e706e67'
   },
@@ -54,9 +60,11 @@ const address = {
 
 const materias = [
   {
+    id: 0,
     name: 'METODOLOGIA DE PESQUISA EM ENGENHARIA DE SOFTWARE'
   },
   {
+    id: 1,
     name: 'MATEMÁTICA DISCRETA E LÓGICA'
   }
 ]
@@ -80,7 +88,11 @@ const Profile = () => {
               <div className={styles.achievements_list}>
               {conquitas.length > 0 &&
                 conquitas.map((data) => (
-                  <div className={styles.card_achievments}>
+                  <div
+                  id={data.id}  
+                  key={data.id} 
+                  className={styles.card_achievments}
+                  >
                     <img src={data.img} alt="foto de perfil" className={styles.achievements_img} />
                     <h3>{data.name}</h3>
                   </div>
@@ -99,7 +111,7 @@ const Profile = () => {
               <div className={styles.infos}>
                 <h5>Email</h5>
                 <Link className={styles.linkEmail}>
-                  <p >{user.email}</p>  
+                  <p>{user.email}</p>  
                 </Link>
               </div>
               <div className={styles.infos}>
@@ -148,8 +160,14 @@ const Profile = () => {
               <div className={styles.collumnCourseContent}>
                 {materias.length > 0 &&
                   materias.map((data) => (
-                    <Link className={styles.linkMateria}>
-                      <p>{data.name}</p>
+                    <Link
+                    id={data.id}  
+                    key={data.id} 
+                    className={styles.linkMateria}
+                    >
+                      <p>
+                        {data.name}
+                      </p>
                     </Link>
                   ))}
                   {materias.length === 0 && (
