@@ -70,7 +70,7 @@ img{
 
 .buttons_endereco{
     display: flex;
-    width: 35%;
+    width: 40%;
     flex-direction: row;
     justify-content: space-between;
 }

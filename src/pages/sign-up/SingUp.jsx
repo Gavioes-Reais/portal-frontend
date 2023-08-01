@@ -46,13 +46,11 @@ function SingUp() {
 
   const avancarEtapa = (e) => {
     e.preventDefault();
-
     let podeAutenticar = validandoInfoPessoais(name, email, cpf, datebirth, role, password, confirmPassword)
     console.log(podeAutenticar)
     if (!podeAutenticar) {
       return;
     }
-
     setEtapaAtual(etapaAtual + 1);
   };
 
@@ -85,7 +83,11 @@ function SingUp() {
   };
 
   const handleCEPChange = (e) => {
-    setCEP(e.target.value);
+    let cepDigitado = (e.target.value);
+    cepDigitado = cepDigitado.replace(/\D/g, '');
+    cepDigitado = cepDigitado.substring(0, 8);
+    cepDigitado = cepDigitado.slice(0, 5) + '-' + cepDigitado.slice(5);
+    setCEP(cepDigitado)
   };
 
   const handleCityChange = (e) => {
