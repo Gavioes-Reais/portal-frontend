@@ -53,6 +53,8 @@ const cursosMocados = [
     },
 ]
 
+const atividades = []
+
 function Home() {
     // const [courses, setCourses] = useState([])
 
@@ -77,16 +79,24 @@ function Home() {
                     {cursosMocados.length === 0 && (
                         <div className={styles.not_found_courses}>
                            <h1>Nenhum componente curricular foi encontrado</h1>
-                           <CircularProgress/>
+                           <CircularProgress color='warning'/>
                         </div>
                     )}
                 </div>
             </Card>
             <Card className={styles.atividades_proximas}>
                 <CardHeader title="Atividades proximas" className={styles.CardHeader} />
-                <div>Atividade 1</div>
-                <div>Atividade 2</div>
-                <div>Atividade 3</div>
+                {atividades.length > 0 &&
+                    atividades.map((data) => (
+                        <div>Atividade</div>
+                    ))}
+                    {atividades.length === 0 && (
+                        <div className={styles.not_found_actividades}>
+                           <h4>Nenhuma atividade foi encontrada </h4>
+                           <br/>
+                           <CircularProgress color='warning'/>
+                        </div>
+                    )}
             </Card>
         </div>
     </>  
