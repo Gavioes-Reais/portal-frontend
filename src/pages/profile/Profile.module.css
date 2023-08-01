@@ -36,7 +36,8 @@
     padding: 2rem;
     height: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .infos{
@@ -127,4 +128,44 @@
 .link:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+
+.collumnInfo{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.collumnCourse{
+    width: 40%;
+    height: max-content;
+}
+
+.collumnCourseContent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CardHeader{
+    border-bottom: 2px solid #cecece;
+}
+
+.not_found_materia{
+    margin: 2rem;
+    width: 80%;
+    text-align: center;
+}
+
+.linkMateria{
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 1rem;
+    text-align: center;
+}
+
+.linkMateria:hover{
+    text-decoration: underline;
 }

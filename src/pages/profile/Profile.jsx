@@ -2,6 +2,7 @@ import React from 'react'
 import NavBar from '../../components/Navbar/NavBar'
 import styles from './Profile.module.css'
 import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
@@ -51,6 +52,15 @@ const address = {
   complement: 'Casa',
 }
 
+const materias = [
+  {
+    name: 'METODOLOGIA DE PESQUISA EM ENGENHARIA DE SOFTWARE'
+  },
+  {
+    name: 'MATEMÁTICA DISCRETA E LÓGICA'
+  }
+]
+
 const Profile = () => {
   return (
     <div className={styles.full_view}>
@@ -60,7 +70,7 @@ const Profile = () => {
           <div className={styles.row}>
             <div className={styles.pic_profile}>
               <img src={img} alt="foto de perfil" className={styles.img} />
-              <h4>Joile Junior</h4>
+              <h4>{user.name}</h4>
               <Button variant="outlined" color="warning">Editar Perfil</Button>
             </div>
             <div className={styles.achievements}>
@@ -84,53 +94,71 @@ const Profile = () => {
             </div>
           </div>
           <div className={styles.more_info}>
-            <h4>Detalhes do usuário</h4>
-            <div className={styles.infos}>
-              <h5>Email</h5>
-              <Link className={styles.linkEmail}>
-                <p >{user.email}</p>  
-              </Link>
+            <div className={styles.collumnInfo}>
+              <h4>Detalhes do usuário</h4>
+              <div className={styles.infos}>
+                <h5>Email</h5>
+                <Link className={styles.linkEmail}>
+                  <p >{user.email}</p>  
+                </Link>
+              </div>
+              <div className={styles.infos}>
+                <h5>Nome completo conforme registro de nascimento</h5>
+                <p>{user.name}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>Data de Nascimento</h5>
+                <p>{user.birthDate}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>CPF</h5>
+                <p>{user.cpf}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>CEP</h5>
+                <p>{address.cep}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>Estado</h5>
+                <p>{address.state}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>Cidade</h5>
+                <p>{address.city}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>Bairro</h5>
+                <p>{address.neighborhood}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>Logradouro</h5>
+                <p>{address.street}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>Número</h5>
+                <p>{address.number}</p>
+              </div>
+              <div className={styles.infos}>
+                <h5>Complemento</h5>
+                <p>{address.complement}</p>
+              </div>
             </div>
-            <div className={styles.infos}>
-              <h5>Nome completo conforme registro de nascimento</h5>
-              <p>{user.name}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>Data de Nascimento</h5>
-              <p>{user.birthDate}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>CPF</h5>
-              <p>{user.cpf}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>CEP</h5>
-              <p>{address.cep}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>Estado</h5>
-              <p>{address.state}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>Cidade</h5>
-              <p>{address.city}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>Bairro</h5>
-              <p>{address.neighborhood}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>Logradouro</h5>
-              <p>{address.street}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>Número</h5>
-              <p>{address.number}</p>
-            </div>
-            <div className={styles.infos}>
-              <h5>Complemento</h5>
-              <p>{address.complement}</p>
-            </div>
+            <Card className={styles.collumnCourse}>
+              <CardHeader title="Matrículas" className={styles.CardHeader} />
+              <div className={styles.collumnCourseContent}>
+                {materias.length > 0 &&
+                  materias.map((data) => (
+                    <Link className={styles.linkMateria}>
+                      <p>{data.name}</p>
+                    </Link>
+                  ))}
+                  {materias.length === 0 && (
+                  <div className={styles.not_found_materia}>
+                    <h4>Não está matriculado em nenhuma matéria</h4>
+                  </div>
+                )}
+              </div>
+            </Card>
           </div>
         </Card>
       </div>
