@@ -24,7 +24,7 @@ const MatterService = {
   
     getById: async (id) => {
       try {
-        const response = await fetch(`/matter/${id}`);
+        const response = await fetch(`${api}/matter/${id}`);
   
         if (!response.ok) {
           throw new Error('Matéria não encontrada');
@@ -75,7 +75,7 @@ const MatterService = {
   
     delete: async (id) => {
       try {
-        const response = await fetch(`/matter/delete/${id}`, {
+        const response = await fetch(`${api}/matter/delete/${id}`, {
           method: 'DELETE',
         });
 
