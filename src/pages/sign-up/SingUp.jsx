@@ -383,6 +383,7 @@ function SingUp() {
     }
     console.log(address)
   }
+  
   return (
     <div className={styles.container}>
       <Card className={styles.card}>

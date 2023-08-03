@@ -33,7 +33,7 @@ const NavBar = () => {
     <AppBar color="warning" position="sticky" >
       <Toolbar className={styles.spaceBeetwen}>
         <div>
-          <DrawerComp />
+          <DrawerComp userRole={"2"} />
           <Link to="/home">
             <IconButton>
               <img src={logo} alt="logo" className={styles.logo} />
