@@ -7,8 +7,8 @@ import NavBar from '../../components/Navbar/NavBar';
 
 const EventCalendar = () => {
   const events = [
-    { title: 'Reunião', date: '2023-07-26', time: '14:00', type: 'warning', },
-    { title: 'Aniversário', date: '2023-07-28', time: '18:30', type: 'warning', },
+    { title: 'Reunião', date: '2023-08-26', time: '14:00', type: 'warning', },
+    { title: 'Prova', date: '2023-08-28', time: '18:30', type: 'error', },
   ];
 
   const dateCellRender = (value) => {
