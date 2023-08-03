@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import MatterService from '../../services/MattService';
 
 import NavBar from '../../components/Navbar/NavBar'
+import Card from '@mui/material/Card'
 
 import styles from './Course.module.css'
 
@@ -17,7 +18,7 @@ const Course = () => {
 
   useEffect(() => {
     fetchMatters();
-  }, []);
+  });
 
   const fetchMatters = async () => {
       try {
@@ -39,11 +40,21 @@ const Course = () => {
   };
 
   return (
+    <>
+    <NavBar/>
     <div className={styles.body}>
-      <NavBar/>
-      <h1>{course.name}</h1>
+      <Card className={styles.infos}>
+        <div className={styles.row}>
+          <h4>Informações gerais</h4>
+        </div>
+        <div className={styles.row}>
+          <h2>{course.name}</h2>
+          <h3>{course.series}</h3>
+        </div>
+      </Card>
       <ToastContainer />
     </div>
+    </>
   )
 }
 
