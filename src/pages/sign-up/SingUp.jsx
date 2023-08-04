@@ -10,7 +10,6 @@ import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import CircularProgress from '@mui/material/CircularProgress';
 
 import userService from '../../services/AuthService';
 
@@ -29,7 +28,6 @@ const roles = [
 ];
 
 function SingUp() {
-  const [loading, setLoading] = useState(false);
   const [etapaAtual, setEtapaAtual] = useState(1);
 
   const [name, setName] = useState('');
