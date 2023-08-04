@@ -21,7 +21,7 @@ function Login() {
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-
+  
   function validandoLgin(cpf, senha){
     let retornaErro = false;
 

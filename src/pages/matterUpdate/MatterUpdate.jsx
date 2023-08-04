@@ -130,6 +130,9 @@ const UpdateMatter = () => {
         progress: undefined,
         theme: 'colored',
       });
+      setTimeout(() => {
+        window.location.assign(`/course/${id}`);
+      }, 3001)
     } catch (error) {
       console.error('Erro ao atualizar matéria:', error);
       toast.error('Falha ao atualizar matéria!', {

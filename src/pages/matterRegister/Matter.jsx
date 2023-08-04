@@ -112,7 +112,7 @@ const CreateMatter = () => {
                 }
             );
             setTimeout(() => {
-                window.location.reload();
+                window.location.assign("/home");
             }, 3001)
         } catch (error) {
             console.error('Erro ao criar matéria:', error);

@@ -54,7 +54,7 @@ const Course = () => {
       <Card className={styles.infos}>
         <div className={styles.row}>
           <h4>Informações gerais</h4>
-          {userRole == 2 &&(
+          {userRole === 2 &&(
             <Link to={`/matter/edit/${id}`}>
               <Button type="button" variant="outlined" color="warning">Editar</Button>
             </Link>
