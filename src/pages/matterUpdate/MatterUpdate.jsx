@@ -6,6 +6,7 @@ import NavBar from '../../components/Navbar/NavBar';
 import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import styles from './MatterUpdate.module.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,6 +17,7 @@ const UpdateMatter = () => {
     const [name, setName] = useState('');
     const [series, setSeries] = useState('');
     const [img_url, setImg_url] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
     fetchExistingData(id);
@@ -119,11 +121,12 @@ const UpdateMatter = () => {
     };
 
     try {
+      setLoading(true)
       const updatedMatter = await MatterService.update(mater);
       console.log('Matéria atualizada:', updatedMatter);
       toast.success('Matéria atualizada com sucesso!', {
         position: 'top-right',
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         draggable: true,
@@ -132,7 +135,7 @@ const UpdateMatter = () => {
       });
       setTimeout(() => {
         window.location.assign(`/course/${id}`);
-      }, 3001)
+      }, 2001)
     } catch (error) {
       console.error('Erro ao atualizar matéria:', error);
       toast.error('Falha ao atualizar matéria!', {
@@ -144,6 +147,8 @@ const UpdateMatter = () => {
         progress: undefined,
         theme: 'colored',
       });
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -193,23 +198,29 @@ const UpdateMatter = () => {
               />
             </div>
             <div className={styles.row_input}>
-              <Button
-                type="reset"
-                variant="outlined"
-                color="warning"
-                className={styles.button}
-                onClick={handleCancel}
-              >
-                Cancelar
+            {loading ? (
+              <div className={styles.row_load}>
+                <CircularProgress color="warning" disabled/>
+              </div>
+            ) : (
+            <div className={styles.row_input}>
+              <Button 
+              type="reset" 
+              variant="outlined" 
+              color="warning"
+              className={styles.button}
+              onClick={handleCancel}
+              >Cancelar
               </Button>
-              <Button
-                type="submit"
-                variant="contained"
-                color="warning"
-                className={styles.button}
-              >
-                Atualizar
+              <Button 
+              type="submit" 
+              variant="contained" 
+              color="warning"
+              className={styles.button}
+              >Salvar
               </Button>
+            </div>
+            )}  
             </div>
           </form>
         </Card>

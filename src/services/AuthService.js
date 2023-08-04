@@ -14,9 +14,11 @@ const AuthService = {
       if (!response.ok) {
         throw new Error("Erro na resposta");
       }
-  
+
+      const authorized = await response.text();
+      return authorized;
     } catch (error) {
-      throw new Error("Erro ao fazer login");
+      throw new Error("Cpf ou senha invalidos");
     }
   },
 

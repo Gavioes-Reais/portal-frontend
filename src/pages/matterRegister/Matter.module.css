@@ -35,6 +35,15 @@
     justify-content: space-between;
 }
 
+.row_load{
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .input{
     width: 100%;
 }

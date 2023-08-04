@@ -111,7 +111,6 @@ function Login() {
       setTimeout(() => {
         window.location.assign("/home");
       }, 3001)
-            
     }  catch (e) {
       toast.error(`${e}`, {
         position: "top-right",

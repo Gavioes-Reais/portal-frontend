@@ -7,6 +7,7 @@ import NavBar from '../../components/Navbar/NavBar'
 import Card from '@mui/material/Card'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import styles from './Matter.module.css'
 
@@ -17,6 +18,7 @@ const CreateMatter = () => {
     const [name, setName] = useState('');
     const [series, setSeries] = useState('');
     const [img_url, setImg_url] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleCancel = () => {
         setName('')
@@ -99,6 +101,7 @@ const CreateMatter = () => {
         console.log(mater)
 
         try {
+            setLoading(true)
             const createdMatter = await MatterService.create(mater);
             console.log('Matéria criada:', createdMatter);
             toast.success('Matéria Criada com sucesso!', {
@@ -126,7 +129,9 @@ const CreateMatter = () => {
                 theme: "colored",
                 }
             );
-        }
+        } finally {
+            setLoading(false)
+        } 
       }
 
     return (
@@ -175,21 +180,29 @@ const CreateMatter = () => {
                     />
                 </div>
                 <div className={styles.row_input}>
-                    <Button 
-                    type="reset" 
-                    variant="outlined" 
-                    color="warning"
-                    className={styles.button}
-                    onClick={handleCancel}
-                    >Cancelar
-                    </Button>
-                    <Button 
-                    type="submit" 
-                    variant="contained" 
-                    color="warning"
-                    className={styles.button}
-                    >Salvar
-                    </Button>
+                {loading ? (
+                    <div className={styles.row_load}>
+                        <CircularProgress color="warning" disabled/>
+                    </div>
+                ) : (
+                    <div className={styles.row_input}>
+                        <Button 
+                        type="reset" 
+                        variant="outlined" 
+                        color="warning"
+                        className={styles.button}
+                        onClick={handleCancel}
+                        >Cancelar
+                        </Button>
+                        <Button 
+                        type="submit" 
+                        variant="contained" 
+                        color="warning"
+                        className={styles.button}
+                        >Salvar
+                        </Button>
+                    </div>
+                )}  
                 </div>
             </form>
         </Card>

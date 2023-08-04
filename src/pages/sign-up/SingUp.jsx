@@ -10,6 +10,7 @@ import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import userService from '../../services/AuthService';
 
@@ -28,6 +29,7 @@ const roles = [
 ];
 
 function SingUp() {
+  const [loading, setLoading] = useState(false);
   const [etapaAtual, setEtapaAtual] = useState(1);
 
   const [name, setName] = useState('');
@@ -385,7 +387,7 @@ function SingUp() {
       console.log('Matéria criada:', registerUser);
       toast.success('Cadastro realizad com sucesso!', {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: true,
           draggable: true,
@@ -395,7 +397,7 @@ function SingUp() {
       );
       setTimeout(() => {
           window.location.assign("/");
-      }, 3001)
+      }, 1001)
     } catch (error) {
         console.error('Falha ao cadastrar:', error);
         toast.error('Falha ao cadastrar!', {
