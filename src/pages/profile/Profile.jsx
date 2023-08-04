@@ -6,7 +6,7 @@ import CardHeader from '@mui/material/CardHeader';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
-const img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvjri0cgNoRSFSRqYxKOKHZ_aGAFWughbhUw&usqp=CAU";
+const img = "https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png";
 
 const conquitas = [
   {

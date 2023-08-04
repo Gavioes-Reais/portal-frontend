@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,11 +18,28 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import styles from './NavBar.module.css';
 
 import DrawerComp from './Drawer';
-import { Link } from 'react-router-dom';
+import LogoutDialog from '../logout/Logout';
+
+import AuthService from '../../services/AuthService';
 
 const NavBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [logoutOpen, setLogoutOpen] = useState(false);
+
+  const handleLogoutClick = () => {
+    setLogoutOpen(true);
+  };
+
+  const handleLogoutClose = () => {
+    setLogoutOpen(false);
+  };
+
+  const handleLogout = () => {
+    AuthService.logout();
+    console.log("Logout realizado!");
+    window.location.assign("/");
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -33,7 +52,7 @@ const NavBar = () => {
     <AppBar color="warning" position="sticky" >
       <Toolbar className={styles.spaceBeetwen}>
         <div>
-          <DrawerComp />
+          <DrawerComp userRole={"2"} />
           <Link to="/home">
             <IconButton>
               <img src={logo} alt="logo" className={styles.logo} />
@@ -68,13 +87,14 @@ const NavBar = () => {
               </MenuItem>
             </Link>
             <Link  className={styles.link}>
-              <MenuItem onClick={handleClose} className={styles.menu}>
-                <span className={styles.conteudoMenu}> <LogoutIcon/>  Sair</span> 
+              <MenuItem onClick={handleClose} className={styles.menu} >
+                <span className={styles.conteudoMenu} onClick={handleLogoutClick}> <LogoutIcon/>  Sair</span> 
               </MenuItem>
             </Link>
           </Menu>
         </div>
       </Toolbar>
+      <LogoutDialog open={logoutOpen} onClose={handleLogoutClose} onLogout={handleLogout} />
     </AppBar>
   )
 }

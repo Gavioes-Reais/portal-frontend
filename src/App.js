@@ -7,6 +7,8 @@ import Profile from "./pages/profile/Profile";
 import Library from "./pages/library/Library";
 import Bulletin from "./pages/bulletin/Bulletin";
 import Course from "./pages/course/Course";
+import CreateMatter from "./pages/matterRegister/Matter"
+import MatterUpdate from "./pages/matterUpdate/MatterUpdate"
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route exact path="/library" element={ <Library/> }/>
         <Route exact path="/bulletin" element={ <Bulletin/> }/>
         <Route exact path="/course/:id" element={ <Course/> }/>    
+        <Route exact path="/createMatter" element={ <CreateMatter/> }/> 
+        <Route exact path="/matter/edit/:id" element={ <MatterUpdate/> }/> 
       </Routes>
     </Router>
   );

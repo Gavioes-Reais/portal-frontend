@@ -20,3 +20,13 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@media (max-width: 1100px){
+    .infos{
+        width: 90%;
+        margin: 3rem;
+    }
+    .row{
+        text-align: center;
+    }
+}

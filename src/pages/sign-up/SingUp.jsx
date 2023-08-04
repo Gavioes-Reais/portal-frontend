@@ -11,6 +11,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
+import userService from '../../services/AuthService';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -354,35 +356,62 @@ function SingUp() {
     return !retornaErro;
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const person = {
-      name: name,
-      email: email,
-      cpf: cpf,
-      birthDate: datebirth,
-      role: role,
-      password: password
-    }
-    console.log(person)
     let podeAutenticar = validandoEndereco(cep, city, state, street, number, neighborhood, complement)
     console.log(podeAutenticar)
     if (!podeAutenticar) {
       return;
     }
     
-    const address = {
+    const person = {
+      name: name,
+      email: email,
+      CPF: cpf,
+      password: password,
+      birthDate: datebirth,
       cep: cep,
-      city: city,
-      state: state,
-      neighborhood: neighborhood,
+      cityName: city,
+      ufShortName: state,
       street: street,
+      district: neighborhood,
       number: number,
-      complement: complement,
+      complement: complement
     }
-    console.log(address)
+    console.log(person)
+    try {
+      const registerUser = await userService.create(person);
+      console.log('Matéria criada:', registerUser);
+      toast.success('Cadastro realizad com sucesso!', {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          }
+      );
+      setTimeout(() => {
+          window.location.assign("/");
+      }, 1001)
+    } catch (error) {
+        console.error('Falha ao cadastrar:', error);
+        toast.error('Falha ao cadastrar!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
+    }
+
   }
+  
   return (
     <div className={styles.container}>
       <Card className={styles.card}>

@@ -1,19 +1,24 @@
-import axios from "axios";
+const api = 'http://localhost:8090';
 
 const AuthService = {
-  login: async (cpf, password) => {
+  login: async (userData) => {
     try {
-      // Substitua a URL abaixo pela sua API de autenticação real
-      const response = await axios.post(`sua_api_de_login`, { cpf, password });
-      const { token, user } = response.data;
+      const response = await fetch(`${api}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Erro na resposta");
+      }
 
-      // Armazenar o token e informações do usuário no localStorage
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
-
-      return user;
+      const authorized = await response.text();
+      return authorized;
     } catch (error) {
-      throw new Error("Erro ao fazer login");
+      throw new Error("Cpf ou senha invalidos");
     }
   },
 
@@ -38,6 +43,27 @@ const AuthService = {
     // Verificar se o usuário está autenticado com base no token
     const token = localStorage.getItem("token");
     return !!token;
+  },
+
+  create: async (person) => {
+    try {
+      const response = await fetch(`${api}/registro`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(person),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao criar usuário');
+      }
+
+      const createdMatterDto = await response.json();
+      return createdMatterDto;
+    } catch (error) {
+      throw new Error('Erro ao criar matéria');
+    }
   },
 };
 

@@ -1,11 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 import MatterService from '../../services/MattService';
 
 import NavBar from '../../components/Navbar/NavBar'
 import Card from '@mui/material/Card'
+import Button from '@mui/material/Button';
 
 import styles from './Course.module.css'
 
@@ -15,10 +17,16 @@ import 'react-toastify/dist/ReactToastify.css';
 const Course = () => {
   let { id } = useParams();
   const [course, setCourse] = useState({});
+  const [userRole, setUserRole] = useState('');
 
   useEffect(() => {
     fetchMatters();
-  });
+
+    // Obtenha as informações do usuário autenticado, por exemplo, a role do usuário
+    // e armazene em userRole.
+    // Para este exemplo, vou assumir a role do usuário como '2'.
+    setUserRole(2);
+  }, []);
 
   const fetchMatters = async () => {
       try {
@@ -46,6 +54,11 @@ const Course = () => {
       <Card className={styles.infos}>
         <div className={styles.row}>
           <h4>Informações gerais</h4>
+          {userRole === 2 &&(
+            <Link to={`/matter/edit/${id}`}>
+              <Button type="button" variant="outlined" color="warning">Editar</Button>
+            </Link>
+          )}
         </div>
         <div className={styles.row}>
           <h2>{course.name}</h2>
