@@ -101,7 +101,7 @@ function Login() {
 
       toast.success("Login realizado com sucesso", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         draggable: true,
@@ -110,7 +110,7 @@ function Login() {
       })
       setTimeout(() => {
         window.location.assign("/home");
-      }, 3001)
+      }, 2001)
     }  catch (e) {
       toast.error(`${e}`, {
         position: "top-right",
