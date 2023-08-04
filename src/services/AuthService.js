@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const api = 'http://localhost:8090';
+
 const AuthService = {
   login: async (cpf, password) => {
     try {
@@ -38,6 +40,27 @@ const AuthService = {
     // Verificar se o usuário está autenticado com base no token
     const token = localStorage.getItem("token");
     return !!token;
+  },
+
+  create: async (person) => {
+    try {
+      const response = await fetch(`${api}/registro`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(person),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao criar usuário');
+      }
+
+      const createdMatterDto = await response.json();
+      return createdMatterDto;
+    } catch (error) {
+      throw new Error('Erro ao criar matéria');
+    }
   },
 };
 
