@@ -1,19 +1,20 @@
-import axios from "axios";
-
 const api = 'http://localhost:8090';
 
 const AuthService = {
-  login: async (cpf, password) => {
+  login: async (userData) => {
     try {
-      // Substitua a URL abaixo pela sua API de autenticação real
-      const response = await axios.post(`sua_api_de_login`, { cpf, password });
-      const { token, user } = response.data;
-
-      // Armazenar o token e informações do usuário no localStorage
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
-
-      return user;
+      const response = await fetch(`${api}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Erro na resposta");
+      }
+  
     } catch (error) {
       throw new Error("Erro ao fazer login");
     }

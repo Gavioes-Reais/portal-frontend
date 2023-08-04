@@ -89,8 +89,14 @@ function Login() {
 
     try{
       setLoading(true);
-      // Aqui sera adicionado a autenticação
-      const user = await AuthService.login(cpf, password);
+
+      const userData = {
+        CPF: cpf,
+        password: password
+      };
+
+      console.log(userData)
+      const user = await AuthService.login(userData);
       console.log("Usuário logado:", user);
 
       toast.success("Login realizado com sucesso", {
@@ -101,8 +107,11 @@ function Login() {
         draggable: true,
         progress: undefined,
         theme: "colored",
-      })      
-      
+      })
+      setTimeout(() => {
+        window.location.assign("/home");
+      }, 3001)
+            
     }  catch (e) {
       toast.error(`${e}`, {
         position: "top-right",
