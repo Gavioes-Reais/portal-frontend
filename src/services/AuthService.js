@@ -47,7 +47,7 @@ const AuthService = {
 
   create: async (person) => {
     try {
-      const response = await fetch(`${api}/registro`, {
+      const response = await fetch(`${api}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
